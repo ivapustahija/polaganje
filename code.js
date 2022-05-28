@@ -142,7 +142,6 @@ submitNaruci.addEventListener('click', (e) => {
                 divIspis.classList.add('hidden')
                 porudzbine.splice(porudzbine.indexOf(porudzbina), 1)
                 divIspis.textContent = ''
-                divOsnova.textContent = ''
             })
 
             setTimeout( () => {
