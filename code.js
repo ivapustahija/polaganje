@@ -75,18 +75,6 @@ divZaSelect.appendChild(select)
 
 const body = document.body
 
-const ispisiOsnovu = () => {
-
-    const divZaOsnovu = document.createElement('div')
-    divZaOsnovu.id = 'divOsnova'
-    const hr1 = document.createElement('hr')
-    const h1 = document.createElement('h1')
-    h1.textContent = 'Наруџбине:'
-    const hr2 = document.createElement('hr')
-    divZaOsnovu.append(hr1, h1, hr2)
-    body.appendChild(divZaOsnovu)
-}
-
 const inputKupac = document.querySelector('#kupac')
 const selectDino = document.querySelector('#dino')
 const textNapomena = document.querySelector('#napomena')
@@ -118,18 +106,16 @@ submitNaruci.addEventListener('click', (e) => {
     const linija = document.createElement('hr')
     linija.id = 'linijaUDivu'
 
-    let prvi = true
-
     if (kupac != '' && izabraniDino != '') {
+
         let ime = kupac.split(' ')[0]
         let prezime = kupac.split(' ')[1]
 
         if (kupac.length >= 4 && ime[0].toUpperCase() === ime[0] && prezime[0].toUpperCase() === prezime[0]){
 
-            if (prvi === true) {
-                ispisiOsnovu()
-            }
-            prvi = false
+            const divOsnova = document.querySelector('#divOsnova')
+            divOsnova.classList.remove('hidden')
+            divOsnova.classList.add('vidljiv')
 
             pKupac.innerHTML = `<span class="zeleno">Купац: </span> ${kupac}`
             if (napomena != '') {
@@ -156,8 +142,7 @@ submitNaruci.addEventListener('click', (e) => {
                 divIspis.classList.add('hidden')
                 porudzbine.splice(porudzbine.indexOf(porudzbina), 1)
                 divIspis.textContent = ''
-                const osnovaDiv = document.querySelector('#divOsnova')
-                osnovaDiv.textContent = ''
+                divOsnova.textContent = ''
             })
 
             setTimeout( () => {
