@@ -99,6 +99,13 @@ submitNaruci.addEventListener('click', (e) => {
     let kupac = inputKupac.value
     let napomena = textNapomena.value
     let izabraniDino = selectDino.value
+    let cena
+
+    dinos.forEach(dino => {
+        if (izabraniDino === dino.name) {
+            cena = dino.cena
+        }
+    })
 
     const divIspis = document.createElement('div')
     divIspis.classList.add('ispis')
@@ -106,7 +113,7 @@ submitNaruci.addEventListener('click', (e) => {
     const pKupac = document.createElement('p')
     const pNapomena = document.createElement('p')
     const pDino = document.createElement('p')
-    // const pCena = document.createElement('p')
+    const pCena = document.createElement('p')
     const buttonObrisi = document.createElement('button')
     const linija = document.createElement('hr')
     linija.id = 'linijaUDivu'
@@ -131,16 +138,17 @@ submitNaruci.addEventListener('click', (e) => {
                 pNapomena.innerHTML = `<span class="zeleno">Напомена: </span> /`
             }
             pDino.innerHTML = `<span class="zeleno">Диносаурус: </span> ${izabraniDino}`
-            // pCena = 
+            pCena.innerHTML = `<span class="zeleno">Цена: </span> ${cena}`
             buttonObrisi.textContent = 'Обриши'
 
             let porudzbina = {
                 Kupac: kupac,
                 Napomena: napomena,
-                Dinosaurus: izabraniDino
+                Dinosaurus: izabraniDino,
+                Cena: cena
             }
             porudzbine.push(porudzbina)
-            divIspis.append(pKupac, pNapomena, pDino, buttonObrisi, linija)
+            divIspis.append(pKupac, pNapomena, pDino, pCena, buttonObrisi, linija)
             body.appendChild(divIspis)
 
             buttonObrisi.addEventListener('click', (e) => {
