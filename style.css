@@ -15,7 +15,6 @@ sup {
 
 body {
     background-color: #4f7942;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 label {
@@ -65,13 +64,30 @@ label {
     margin: 3px 0 0 120px;
 }
 
+#naruci:hover
+{
+    background-color: #fff;
+    color: #004225;
+}
+
 #dugme {
     position: relative;
     left: 270px;
+    background-color: #fff;
+    color: #000;
+    border: 0.5px solid darkgrey;
+}
+
+#dugme:hover {
+    background-color: rgb(72, 72, 72);
+    color: #fff;
+    border: 1px solid rgb(72, 72, 72);
 }
 
 hr {
     width: 100%;
+    background-color: #fff;
+    border: 1px solid #fff;
 }
 
 .zeleno {
@@ -80,4 +96,21 @@ hr {
 
 .hidden {
     visibility: hidden;
+}
+
+.ispis {
+    width: 800px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#linijaUDivu {
+    width: 800px;
+    background-color: #000;
+    border: 1px solid #000;
+}
+
+#divOsnova {
+    text-align: center;
 }

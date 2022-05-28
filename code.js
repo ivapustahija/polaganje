@@ -60,6 +60,11 @@ const select = document.createElement('select')
 select.name = 'dino'
 select.id = 'dino'
 
+const option = document.createElement('option')
+option.value = ''
+option.innerText = ''
+select.appendChild(option)
+
 dinos.forEach(dino => {
     const option = document.createElement('option')
     option.value = dino.name
@@ -96,6 +101,7 @@ submitNaruci.addEventListener('click', (e) => {
     let izabraniDino = selectDino.value
 
     const divIspis = document.createElement('div')
+    divIspis.classList.add('ispis')
 
     const pKupac = document.createElement('p')
     const pNapomena = document.createElement('p')
@@ -103,6 +109,9 @@ submitNaruci.addEventListener('click', (e) => {
     // const pCena = document.createElement('p')
     const buttonObrisi = document.createElement('button')
     const linija = document.createElement('hr')
+    linija.id = 'linijaUDivu'
+
+    let prvi = true
 
     if (kupac != '' && izabraniDino != '') {
         let ime = kupac.split(' ')[0]
@@ -110,9 +119,13 @@ submitNaruci.addEventListener('click', (e) => {
 
         if (kupac.length >= 4 && ime[0].toUpperCase() === ime[0] && prezime[0].toUpperCase() === prezime[0]){
 
-            ispisiOsnovu()
+            if (prvi === true) {
+                ispisiOsnovu()
+            }
+            prvi = false
+
             pKupac.innerHTML = `<span class="zeleno">Купац: </span> ${kupac}`
-            if(napomena != '') {
+            if (napomena != '') {
                 pNapomena.innerHTML = `<span class="zeleno">Напомена: </span> ${napomena}`
             } else {
                 pNapomena.innerHTML = `<span class="zeleno">Напомена: </span> /`
@@ -138,7 +151,12 @@ submitNaruci.addEventListener('click', (e) => {
                 const osnovaDiv = document.querySelector('#divOsnova')
                 osnovaDiv.textContent = ''
             })
-            
+
+            setTimeout( () => {
+                inputKupac.value = ''
+                textNapomena.value = ''
+                selectDino.value = ''
+            }, 2000)
         } else {
             alert('Поље купац мора да садржи име и презиме, написане почетним великим словом!')
         }
